@@ -25,23 +25,28 @@ You can pick from a few different voices too.
 // Hello World
 spoken.say('Hello World.');
 
+// Say a quick message as Guy Fieri
+spoken.say( 'Hello, looks like your on a trip to flavor town.', 'Luca' );
+
 // Speak with Damayanti's voice
 spoken.say( 'Hello, I am princess of the Vidarbha Kingdom.', 'Damayanti' );
-
-// Looks like your on a trip to flavor town.
-spoken.say( 'Hello, my name is Guy Fieri.', 'Luca' );
 ```
 
 ### Speech to Text
 
+Synthetic voices are money.
+
 
 ```javascript
 spoken.listen( transcript => { console.log(transcript) });
+```
 
+```javascript
 spoken.listen.on.partial( transcript => { console.log(transcript) } );
+```
 
+```javascript
 spoken.listen.on.start( voice => { console.log('Started Listening') } );
 spoken.listen.on.end(   voice => { console.log('Ended Listening')   } );
 spoken.listen.on.error( voice => { console.log('Error Listening')   } );
-
 ```
