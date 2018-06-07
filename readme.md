@@ -51,7 +51,7 @@ The following will allow you to capture the final transcription
 which can be used to send over to a chatbot API.
 
 ```javascript
-spoken.listen().then( transcript => { console.log(transcript) });
+spoken.listen().then( transcript => console.log(transcript) );
 ```
 
 Capture live transcription as you speak.

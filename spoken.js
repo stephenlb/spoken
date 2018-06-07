@@ -15,14 +15,27 @@ recognition.lang           = navigator.language || 'en-US';
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Speech to Text - Listens to your voice and creates a transcription.
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-spoken.listen = async () => {
-    return "words...";
+spoken.listen = async (resolve) => {
+    resolve("words...");
 };
 
-spoken.say = async ( text, voice ) => {
+spoken.getVoices = async (voices) => {
+    return new Promise( r => {
+        speechSynthesis.onvoiceschanged = e => r(speechSynthesis.getVoices());
+    } );
+};
+
+spoken.say = async ( text, voice='Alex' ) => {
     const speech = new SpeechSynthesisUtterance(text);
-    speech.onend = async () => resolve('done');
-    speechSynthesis.speak(speech)
+    const voices = await spoken.getVoices();
+
+    // Select Voice with Default
+    speech.voice = (voices.filter( v => v.name == voice ) || voices)[0];
+
+    return new Promise( resolve => {
+        speech.onend = async () => resolve(speech);
+        speechSynthesis.speak(speech);
+    } );
 };
 
 /*
