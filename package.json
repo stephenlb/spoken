@@ -1,8 +1,8 @@
 {
   "name": "spoken",
+  "version": "1.0.3",
   "license": "MIT",
   "author": "Stephen Blum",
-  "version": "1.0.2",
   "description": "JavaScript Web API for Text-to-Speech and Speech-to-Text.",
   "homepage": "http://stephenlb.github.io/spoken#readme",
   "main": "spoken.js",
@@ -17,9 +17,13 @@
     "voice",
     "speech",
     "text-to-speech",
-    "speect-to-text",
+    "speech-to-text",
     "robot-voice",
-    "speech-detection"
+    "speech-detection",
+    "ai-voice",
+    "artificial-voice",
+    "artificial-speech",
+    "voice-detection"
   ],
   "bugs": { "url": "https://github.com/stephenlb/spoken/issues" },
   "dependencies": {}
