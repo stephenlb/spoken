@@ -1,10 +1,14 @@
 # JavaScript Text-to-Speech and Speech-to-Text for AI Artificial Intelligence Apps
 
+# ⚠️  UNDER CONSTRUCTION ⚠️
+
+> NPM: https://www.npmjs.com/package/spoken
+
 ### Turn Speech into Text and Text into Speech
 
 Compatible on Android / iOS / Linux / Windows / MacOS.
 
-**Spoken** is a Google Chrome Voice Apps SDK.
+**Spoken** is a Google Chrome Voice App SDK.
 This SDK allows you to easily call Voice APIs to turn Text to Speech and Speech to Text.
 The library has no dependencies.
 This SDK is only for Google Chrome apps on Mobile and Web.
@@ -47,7 +51,7 @@ The following will allow you to capture the final transcription
 which can be used to send over to a chatbot API.
 
 ```javascript
-spoken.listen( transcript => { console.log(transcript) });
+spoken.listen().then( transcript => { console.log(transcript) });
 ```
 
 Capture live transcription as you speak.
