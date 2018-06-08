@@ -33,7 +33,7 @@ You can pick from a few different voices too.
 spoken.say('Hello World.');
 
 // Say a quick message as Guy Fieri
-spoken.say( 'Hello, looks like your on a trip to flavor town.', 'Diego' );
+spoken.say( 'Hello, looks like your on a trip to flavor town.', 'Daniel' );
 
 // Speak with Damayanti's voice
 spoken.say( 'Hello, I am princess of the Vidarbha Kingdom.', 'Damayanti' );
@@ -62,6 +62,26 @@ console.log( await spoken.voices() );
 spoken.voices().then( voices => console.log(voices) );
 ```
 
+Get list of **English** voices.
+
+```javascript
+// List English Speaking Voices
+(await spoken.voices()).filter( v => v.lang.indexOf('en') == 0 );
+```
+
+Sample the list of English voices.
+
+```javascript
+// Speak with each English voice to sample your favorites
+(await spoken.voices())
+    .filter( voice => voice.lang.indexOf('en') == 0 )
+    .map( voice => voice.name )
+    .forEach( voice =>
+        spoken.say( 'Welcome to flavor town.', voice ).then(
+            speech => console.log(speech.voice.name)
+        )
+    );
+```
 
 ### Speech-to-Text
 
@@ -75,10 +95,14 @@ The following will allow you to capture the final transcription
 which can be used to send over to a chatbot API.
 
 ```javascript
+// Promise
 spoken.listen().then( transcript => console.log(transcript) );
+
+// Or simply
+console.log(await spoken.listen());
 ```
 
-Capture live transcription as you speak.
+Capture live "real-time" transcription as you speak.
 
 ```javascript
 spoken.listen.on.partial( transcript => { console.log(transcript) } );

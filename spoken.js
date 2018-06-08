@@ -13,13 +13,6 @@ recognition.interimResults = true;
 recognition.lang           = navigator.language || 'en-US';
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// Speech to Text - Listens to your voice and creates a transcription.
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-spoken.listen = async (resolve) => {
-    resolve("words...");
-};
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Get Voices for Text-to-Speech
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 spoken.voices = voices => {
@@ -44,6 +37,13 @@ spoken.say = async ( text, voice='Alex' ) => {
         speech.onend = async () => resolve(speech);
         speechSynthesis.speak(speech);
     } );
+};
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Speech to Text - Listens to your voice and creates a transcription.
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+spoken.listen = async (resolve) => {
+    resolve("words...");
 };
 
 /*
