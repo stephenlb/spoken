@@ -19,15 +19,23 @@ spoken.listen = async (resolve) => {
     resolve("words...");
 };
 
-spoken.getVoices = async (voices) => {
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Get Voices for Text-to-Speech
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+spoken.voices = voices => {
     return new Promise( r => {
+        let voices = speechSynthesis.getVoices();
+        if (voices.length) r(voices);
         speechSynthesis.onvoiceschanged = e => r(speechSynthesis.getVoices());
     } );
 };
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Invoike Synthetic Voices for Text-to-Speech
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 spoken.say = async ( text, voice='Alex' ) => {
     const speech = new SpeechSynthesisUtterance(text);
-    const voices = await spoken.getVoices();
+    const voices = await spoken.voices();
 
     // Select Voice with Default
     speech.voice = (voices.filter( v => v.name == voice ) || voices)[0];

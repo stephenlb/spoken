@@ -2,7 +2,7 @@
 
 # ⚠️  UNDER CONSTRUCTION ⚠️
 
-> NPM: https://www.npmjs.com/package/spoken
+> `npm i spoken` # https://www.npmjs.com/package/spoken
 
 ### Turn Speech into Text and Text into Speech
 
@@ -38,6 +38,30 @@ spoken.say( 'Hello, looks like your on a trip to flavor town.', 'Diego' );
 // Speak with Damayanti's voice
 spoken.say( 'Hello, I am princess of the Vidarbha Kingdom.', 'Damayanti' );
 ```
+
+#### Promises and Async/Await
+
+This SDK Supports modern async programming.
+
+```javascript
+// Promise
+spoken.say('Hello World.').then( v => console.log('Done talking.') );
+
+// Async/Await
+await spoken.say('Hello World.');
+console.log('Done talking.');
+```
+
+### Text-to-Speech Voice Library
+
+```javascript
+// List of voices supported on platform
+console.log( await spoken.voices() );
+
+// List of voices with promise callback
+spoken.voices().then( voices => console.log(voices) );
+```
+
 
 ### Speech-to-Text
 
