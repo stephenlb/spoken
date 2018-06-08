@@ -1,21 +1,27 @@
-(_=>{
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Speech SDK for Voice to Text and Text to Voice
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+(_=>{
 'use strict';
 
 function spoken() { }
 if (typeof window !== 'undefined') window.spoken = spoken;
 
-const recognition = new webkitSpeechRecognition();
-const interim     = [];
-
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Setup Speech Regcognition
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+const recognition = new webkitSpeechRecognition();
+
 recognition.interimResults = true;
 recognition.lang           = navigator.language || 'en-US';
+
+spoken.recognition = recognition;
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Get Voices for Text-to-Speech
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-spoken.voices = voices => {
+spoken.voices = async e => {
     return new Promise( r => {
         let voices = speechSynthesis.getVoices();
         if (voices.length) r(voices);
@@ -42,9 +48,58 @@ spoken.say = async ( text, voice='Alex' ) => {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Speech to Text - Listens to your voice and creates a transcription.
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-spoken.listen = async (resolve) => {
-    resolve("words...");
+spoken.listen = async e => {
+    recognition.onstart  = spoken.listen.startcb;
+    recognition.onend    = spoken.listen.endcb;
+    recognition.onerror  = spoken.listen.errorcb;
+    recognition.onresult = spokenResults;
+
+    return new Promise( ( resolve, reject ) => {
+        try      { resolve(recognition.start()) }
+        catch(e) { reject(e) }
+    } );
 };
+
+function spokenResults(event) {
+    const results = event.results;
+    const interim = [];
+
+    // Results
+    for (let i=0;i<results.length;i++) {
+        // Interim Result
+        interim.push(results[i][0].transcript);
+
+        // Final Result
+        if (results[i].isFinal)
+            resolve( results[i][0].transcript, event );
+    }
+
+    spoken.listen.partialcb( interim.join(''), event );
+    interim.length = 0;
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Stop Speech to Text Voice Recognition
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+spoken.listen.stop = async e => {
+    spoken.recognition.stop();
+};
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Speech to Text - Transcription Events
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+spoken.listen.on = {
+    partial : cb => spoken.listen.partialcb = cb
+,   start   : cb => spoken.listen.startcb   = cb
+,   end     : cb => spoken.listen.endcb     = cb
+,   error   : cb => spoken.listen.errorcb   = cb
+};
+
+spoken.listen.partialcb = e => true;
+spoken.listen.startcb   = e => true;
+spoken.listen.endcb     = e => true;
+spoken.listen.errorcb   = e => true;
+
 
 /*
 

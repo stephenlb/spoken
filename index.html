@@ -2,6 +2,22 @@
 <script>(_=>{
 'use strict';
 
+spoken.listen.on.partial( transcript => { console.log(transcript)          } );
+spoken.listen.on.start(   voice      => { console.log('Started Listening') } );
+spoken.listen.on.end(     voice      => { console.log('Ended Listening')   } );
+spoken.listen.on.error(   voice      => { console.log('Error Listening')   } );
 
+// Speak with each English voice to sample your favorites
+spoken.voices().then( voices => console.log(voices) );
+spoken.voices().then( voices =>
+    voices
+    .filter( voice => voice.lang.indexOf('en') == 0 )
+    .map( voice => voice.name ).slice( 0, 1 )
+    .forEach( voice =>
+        spoken.say( 'Welcome to flavor town.', voice ).then(
+            speech => console.log(speech.voice.name)
+        )
+    )
+);
 
 })();</script>

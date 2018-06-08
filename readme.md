@@ -33,10 +33,10 @@ You can pick from a few different voices too.
 spoken.say('Hello World.');
 
 // Say a quick message as Guy Fieri
-spoken.say( 'Hello, looks like your on a trip to flavor town.', 'Daniel' );
+spoken.say( 'Looks like your on a trip to flavor town.', 'Daniel' );
 
 // Speak with Damayanti's voice
-spoken.say( 'Hello, I am princess of the Vidarbha Kingdom.', 'Damayanti' );
+spoken.say( 'I am princess of the Vidarbha Kingdom.', 'Damayanti' );
 ```
 
 #### Promises and Async/Await
@@ -95,11 +95,11 @@ The following will allow you to capture the final transcription
 which can be used to send over to a chatbot API.
 
 ```javascript
-// Promise
-spoken.listen().then( transcript => console.log(transcript) );
-
-// Or simply
+// Async/Await
 console.log(await spoken.listen());
+
+// or Promise style
+spoken.listen().then( transcript => console.log(transcript) );
 ```
 
 Capture live "real-time" transcription as you speak.
@@ -114,4 +114,10 @@ Additional voice transcription events.
 spoken.listen.on.start( voice => { console.log('Started Listening') } );
 spoken.listen.on.end(   voice => { console.log('Ended Listening')   } );
 spoken.listen.on.error( voice => { console.log('Error Listening')   } );
+```
+
+Stop listening.
+
+```javascript
+spoken.listen.stop();
 ```
