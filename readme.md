@@ -102,6 +102,17 @@ console.log(await spoken.listen());
 spoken.listen().then( transcript => console.log(transcript) );
 ```
 
+There can only be one concurrent listener.
+You can catch for this.
+
+```javascript
+// We can only have one concurrent listener.
+// So you can catch if there is an error.
+spoken.listen()
+    .then( transcript => console.log(transcript) )
+    .catch( error => console.error(error) );
+```
+
 Capture live "real-time" transcription as you speak.
 
 ```javascript
