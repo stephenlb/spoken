@@ -16,9 +16,7 @@
     <h1>Get list of Voices</h1>
     <p>Open your <strong>DEV CONSOLE</strong>. Voices load asynchronously from the OS.</p>
     <div class="codebox">
-        <textarea>spoken.voices().then(
-    voices =&gt; console.log(voices)
-)</textarea>
+        <textarea>console.log(await spoken.voices())</textarea>
         <button>Voices</button>
     </div>
 
@@ -26,9 +24,9 @@
     <h1>Listen (Speech-to-Text)</h1>
     <p>Get voice commands and transcribe your voice to text.</p>
     <div class="codebox">
-        <textarea>spoken.listen().then(
-    transcript =&gt; console.log("Text:" + transcript)
-)</textarea>
+        <textarea>let transcript = await spoken.listen();
+console.log("Text: " + transcript);
+</textarea>
         <button>Listen</button>
     </div>
 
@@ -81,7 +79,8 @@ console.log(await spoken.voices());
 'use strict';
 document.querySelectorAll('.codebox').forEach( box => { 
     box.querySelector('button').addEventListener( 'click', e => {
-        eval(box.querySelector('textarea').value);
+        let code = box.querySelector('textarea').value;
+        eval('(async e=>{' + code + '})();');
     } );
 } );
 })();</script>
