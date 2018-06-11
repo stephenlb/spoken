@@ -57,7 +57,7 @@ spoken.listen().then( ts =&gt; console.log("Partial: " + ts) )
 </div>
 
 <script src="spoken.js"></script>
-<script>(_=>{
+<script>( async e => {
 'use strict';
 
 // Setup Listener Events
@@ -67,17 +67,13 @@ spoken.listen.on.end(     voice      => { console.log('Ended Listening')   } );
 spoken.listen.on.error(   voice      => { console.log('Error Listening')   } );
 
 // Speak with each English voice to sample your favorites
-spoken.voices().then( voices => console.log(voices) );
-spoken.voices().then( voices =>
-    voices
+console.log(await spoken.voices());
+(await spoken.voices())
     .filter(  voice => voice.lang.indexOf('en') == 0 )
-    .map(     voice => voice.name ).slice( 0, 1 )
-    .forEach( voice =>
-        0&& spoken.say( 'Welcome to flavor town.', voice ).then(
-            speech => console.log(speech.voice.name)
-        )
-    )
-);
+    .map(     voice => voice.name ).slice( 7, 8 )
+    .forEach( async voice => console.log(
+        (await spoken.say( 'Hi.', voice )).voice.name
+    ));
 
 })();</script>
 
