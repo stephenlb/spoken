@@ -1,4 +1,4 @@
-# JavaScript Text-to-Speech and Speech-to-Text for AI Artificial Intelligence Apps
+# JavaScript Text-to-Speech and Speech-to-Text for AI Artificial Intelligence Apps and Chatbots
 
 > `npm i spoken` # https://www.npmjs.com/package/spoken
 

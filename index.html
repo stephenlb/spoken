@@ -1,4 +1,8 @@
 <div class="container">
+    <div class="instructions">
+	Open your <strong>DEV CONSOLE</strong> with <strong>OPTION + COMMAND + J.</strong>
+    </div>
+
     <h1>Say (Text-to-Speech)</h1>
     <div>Speak synthetically using this simple SDK.</div>
     <div class="codebox">
@@ -6,8 +10,8 @@
         <button>Say</button>
     </div>
 
-    <h1>Get Voices</h1>
-    <div>Voices load asynchronously from the OS.</div>
+    <h1>Get list of Voices</h1>
+    <div>Open your <strong>DEV CONSOLE</strong>. Voices load asynchronously from the OS.</div>
     <div class="codebox">
         <textarea>spoken.voices().then(
     voices =&gt; console.log(voices)
@@ -32,7 +36,7 @@
         transcript =&gt; alert("Answer: " + transcript)
     )
 } )</textarea>
-        <button>Listen</button>
+        <button>Prompt</button>
     </div>
 
 </div>
@@ -90,13 +94,14 @@ button {
     font-family: "San Francisco", "Helvetica Neue", "Helvetica", Arial, Sans-Serif;
     font-weight: 400;
     font-size: 23px;
-    height: 120px;
+    height: 140px;
 }
 textarea {
     flex: 10;
+    border-radius: 4px;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 20px;
-    height: 120px;
+    height: 140px;
 }
 div.codebox {
     display: flex;
@@ -111,5 +116,9 @@ div.codebox {
 }
 div.container {
     margin: 30px;
+}
+div.instructions {
+    background: #f1f1fe;
+    padding: 30px;
 }
 </style>
