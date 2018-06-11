@@ -52,15 +52,16 @@ spoken.listen = async e => {
     recognition.onstart  = spoken.listen.startcb;
     recognition.onend    = spoken.listen.endcb;
     recognition.onerror  = spoken.listen.errorcb;
-    recognition.onresult = spokenResults;
 
     return new Promise( ( resolve, reject ) => {
-        try      { resolve(recognition.start()) }
+        recognition.onresult = async e => transcriptResults( e, resolve );
+
+        try      { recognition.start() }
         catch(e) { reject(e) }
     } );
 };
 
-function spokenResults(event) {
+function transcriptResults( event, resolve ) {
     const results = event.results;
     const interim = [];
 
@@ -99,63 +100,5 @@ spoken.listen.partialcb = e => true;
 spoken.listen.startcb   = e => true;
 spoken.listen.endcb     = e => true;
 spoken.listen.errorcb   = e => true;
-
-
-/*
-
-voice.stopped     = false;
-voice.recognition = recognition;
-
-voice.speak = (text) => {
-    const speech = new SpeechSynthesisUtterance(text);
-    speechSynthesis.speak(speech);
-};
-
-voice.stop   = () => { voice.stopped = true; recognition.stop(); };
-voice.start  = () => { voice.stopped = false; }
-voice.listen = () => {
-    if (voice.stopped) return;
-    if (speechSynthesis.speaking) {
-        return setTimeout( voice.listen, 100 );
-    }
-
-    voice.onInterim   = voice.onInterim || (()=>{});
-    voice.onFinal     = voice.onFinal   || (()=>{});
-    voice.onStart     = voice.onStart   || (()=>{});
-    voice.onEnd       = voice.onEnd     || (()=>{});
-    voice.onError     = voice.onError   || (()=>{});
-    voice.noMatch     = voice.noMatch   || (()=>{});
-    voice.finalResult = '';
-
-    recognition.onstart  = voice.onStart;
-    recognition.onend    = voice.onEnd;
-    recognition.onerror  = voice.onError;
-    recognition.nomatch  = voice.noMatch;
-    recognition.onresult = results;
-
-    try { recognition.start() }
-    catch(e) {}
-};
-
-
-function results(event) {
-    const results = event.results;
-
-    // Results
-    for (let i=0;i<results.length;i++) {
-        // Interim Result
-        interim.push(results[i][0].transcript);
-
-        // Final Result
-        if (results[i].isFinal) {
-            voice.finalResult = results[i][0].transcript;
-            voice.onFinal( results[i][0].transcript, event );
-        }
-    }
-
-    voice.onInterim( interim.join(''), event );
-    interim.length = 0;
-}
-*/
 
 })();

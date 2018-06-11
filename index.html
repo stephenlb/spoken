@@ -1,7 +1,47 @@
+<div class="container">
+    <h1>Say (Text-to-Speech)</h1>
+    <div>Speak synthetically using this simple SDK.</div>
+    <div class="codebox">
+        <textarea>spoken.say( 'Welcome to flavor town.', 'Daniel' )</textarea>
+        <button>Say</button>
+    </div>
+
+    <h1>Get Voices</h1>
+    <div>Voices load asynchronously from the OS.</div>
+    <div class="codebox">
+        <textarea>spoken.voices().then(
+    voices =&gt; console.log(voices)
+)</textarea>
+        <button>Voices</button>
+    </div>
+
+    <h1>Listen (Speech-to-Text)</h1>
+    <div>Get voice commands and transcribe your voice to text.</div>
+    <div class="codebox">
+        <textarea>spoken.listen().then(
+    transcript =&gt; console.log("Text:" + transcript)
+)</textarea>
+        <button>Listen</button>
+    </div>
+
+    <h1>Prompt User Voice Command Example</h1>
+    <div>You want to ask the user for information and record their response.</div>
+    <div class="codebox">
+        <textarea>spoken.say('What is your favorite ice cream?').then( e =&gt; {
+    spoken.listen().then(
+        transcript =&gt; alert("Answer: " + transcript)
+    )
+} )</textarea>
+        <button>Listen</button>
+    </div>
+
+</div>
+
 <script src="spoken.js"></script>
 <script>(_=>{
 'use strict';
 
+// Setup Listener Events
 spoken.listen.on.partial( transcript => { console.log(transcript)          } );
 spoken.listen.on.start(   voice      => { console.log('Started Listening') } );
 spoken.listen.on.end(     voice      => { console.log('Ended Listening')   } );
@@ -11,13 +51,65 @@ spoken.listen.on.error(   voice      => { console.log('Error Listening')   } );
 spoken.voices().then( voices => console.log(voices) );
 spoken.voices().then( voices =>
     voices
-    .filter( voice => voice.lang.indexOf('en') == 0 )
-    .map( voice => voice.name ).slice( 0, 1 )
+    .filter(  voice => voice.lang.indexOf('en') == 0 )
+    .map(     voice => voice.name ).slice( 0, 1 )
     .forEach( voice =>
-        spoken.say( 'Welcome to flavor town.', voice ).then(
+        0&& spoken.say( 'Welcome to flavor town.', voice ).then(
             speech => console.log(speech.voice.name)
         )
     )
 );
 
 })();</script>
+
+<script>(_=>{
+'use strict';
+document.querySelectorAll('.codebox').forEach( box => { 
+    box.querySelector('button').addEventListener( 'click', e => {
+        eval(box.querySelector('textarea').value);
+    } );
+} );
+})();</script>
+
+<style>
+div, body, html {
+    padding: 0;
+    margin: 0;
+}
+div, h1, body, html {
+    font-family: "San Francisco", "Helvetica Neue", "Helvetica", Arial, Sans-Serif;
+    font-weight: 400;
+}
+h1 {
+    flex: 1;
+}
+button {
+    flex: 1;
+    margin: 5px;
+    border-radius: 10px;
+    font-family: "San Francisco", "Helvetica Neue", "Helvetica", Arial, Sans-Serif;
+    font-weight: 400;
+    font-size: 23px;
+    height: 120px;
+}
+textarea {
+    flex: 10;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 20px;
+    height: 120px;
+}
+div.codebox {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+div.container {
+    margin: 30px;
+}
+</style>

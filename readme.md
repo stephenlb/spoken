@@ -1,8 +1,22 @@
 # JavaScript Text-to-Speech and Speech-to-Text for AI Artificial Intelligence Apps
 
-# ⚠️  UNDER CONSTRUCTION ⚠️
-
 > `npm i spoken` # https://www.npmjs.com/package/spoken
+
+### Code Playground
+
+Playground URL: https://stephenlb.github.io/spoken/
+
+### Example Usage Pattern
+
+You can prompt the user with a synthetic voice and speak the answer with a few lines of code.
+
+```javascript
+spoken.say('What is your favorite ice cream?').then( e => {
+    spoken.listen().then(
+        transcript => alert("Answer: " + transcript)
+    )
+} )
+```
 
 ### Turn Speech into Text and Text into Speech
 
@@ -84,6 +98,28 @@ Sample the list of English voices.
 ```
 
 ### Speech-to-Text
+
+> Must use HTTPS to access microphone.
+
+You need an HTTPS (TLS) File Server. To start a local secure file server:
+
+```shell
+python <(curl -L https://goo.gl/LiW3lp)
+```
+
+Then open your browser and point it to your file in
+the directory you ran the python HTTPS server.
+
+```shell
+open https://0.0.0.0:4443/index.html
+```
+
+> This is a Simple Python HTTPS Secure Server
+> https://gist.github.com/stephenlb/2e19d98039469b9d0134
+
+We posted an answer on
+[StackOverflow WebRTC HTTPS](http://stackoverflow.com/a/41969170/524733).
+This will get you started testing on your laptop.
 
 Turn your spoken words into text using the `listen()` method.
 You will want to also take advantage of the real-time speech
