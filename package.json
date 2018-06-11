@@ -1,6 +1,6 @@
 {
   "name": "spoken",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "license": "MIT",
   "author": "Stephen Blum",
   "description": "JavaScript Web API for Text-to-Speech and Speech-to-Text.",
@@ -16,6 +16,9 @@
   "keywords": [
     "voice",
     "speech",
+    "javascript",
+    "chrome",
+    "google-chrome",
     "text-to-speech",
     "speech-to-text",
     "robot-voice",
