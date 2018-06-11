@@ -11,10 +11,9 @@ Playground URL: https://stephenlb.github.io/spoken/
 You can prompt the user with a synthetic voice and speak the answer with a few lines of code.
 
 ```javascript
-spoken.say('What is your favorite ice cream?').then( e => {
-    spoken.listen().then(
-        transcript => alert("Answer: " + transcript)
-    )
+spoken.say('What is your favorite ice cream?').then( speech => {
+    spoken.listen().then( transcript =>
+        console.log("Answer: " + transcript) )
 } )
 ```
 
