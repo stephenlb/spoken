@@ -152,7 +152,8 @@ spoken.listen()
 Capture live "real-time" transcription as you speak.
 
 ```javascript
-spoken.listen.on.partial( transcript => { console.log(transcript) } );
+spoken.listen.on.partial( ts => console.log(ts)               );
+spoken.listen().then(     ts => console.log("Partial: " + ts) );
 ```
 
 Additional voice transcription events.

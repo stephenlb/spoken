@@ -3,15 +3,17 @@
 	Open your <strong>DEV CONSOLE</strong> with <strong>OPTION + COMMAND + J.</strong>
     </div>
 
+
     <h1>Say (Text-to-Speech)</h1>
-    <div>Speak synthetically using this simple SDK.</div>
+    <p>Speak synthetically using this simple SDK.</p>
     <div class="codebox">
         <textarea>spoken.say( 'Welcome to flavor town.', 'Daniel' )</textarea>
         <button>Say</button>
     </div>
 
+
     <h1>Get list of Voices</h1>
-    <div>Open your <strong>DEV CONSOLE</strong>. Voices load asynchronously from the OS.</div>
+    <p>Open your <strong>DEV CONSOLE</strong>. Voices load asynchronously from the OS.</p>
     <div class="codebox">
         <textarea>spoken.voices().then(
     voices =&gt; console.log(voices)
@@ -19,8 +21,9 @@
         <button>Voices</button>
     </div>
 
+
     <h1>Listen (Speech-to-Text)</h1>
-    <div>Get voice commands and transcribe your voice to text.</div>
+    <p>Get voice commands and transcribe your voice to text.</p>
     <div class="codebox">
         <textarea>spoken.listen().then(
     transcript =&gt; console.log("Text:" + transcript)
@@ -28,14 +31,25 @@
         <button>Listen</button>
     </div>
 
+
     <h1>Prompt User Voice Command Example</h1>
-    <div>You want to ask the user for information and record their response.</div>
+    <p>You want to ask the user for information and record their response.</p>
     <div class="codebox">
         <textarea>spoken.say('What is your favorite ice cream?').then( e =&gt; {
     spoken.listen().then(
         transcript =&gt; alert("Answer: " + transcript)
     )
 } )</textarea>
+        <button>Prompt</button>
+    </div>
+
+
+    <h1>Capture Partial Transcripts</h1>
+    <p>Capture live "real-time" transcription as you speak.</p>
+    <div class="codebox">
+        <textarea>spoken.listen.on.partial( ts =&gt; console.log(ts) )
+spoken.listen().then( ts =&gt; console.log("Partial: " + ts) )
+</textarea>
         <button>Prompt</button>
     </div>
 
