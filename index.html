@@ -24,8 +24,8 @@
     <h1>Listen (Speech-to-Text)</h1>
     <p>Get voice commands and transcribe your voice to text.</p>
     <div class="codebox">
-        <textarea>let transcript = await spoken.listen();
-console.log("Text: " + transcript);
+        <textarea>let transcript = await spoken.listen()
+console.log("Text: " + transcript)
 </textarea>
         <button>Listen</button>
     </div>
@@ -104,14 +104,19 @@ button {
     font-family: "San Francisco", "Helvetica Neue", "Helvetica", Arial, Sans-Serif;
     font-weight: 400;
     font-size: 23px;
-    height: 140px;
+    height: 170px;
 }
 textarea {
     flex: 10;
+    white-space: nowrap;
+    border: 0;
+    padding: 20px;
     border-radius: 4px;
     font-family: "Lucida Console", Monaco, monospace;
-    font-size: 20px;
-    height: 140px;
+    font-size: 18px;
+    height: 170px;
+    background: #3f3f32;
+    color: #e1e2ee;
 }
 div.codebox {
     display: flex;
