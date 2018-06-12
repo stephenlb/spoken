@@ -2,6 +2,10 @@
 
 > `npm i spoken` # https://www.npmjs.com/package/spoken
 
+ - Help blind and low-vision users gain independence.
+ - Hands-free app interface.
+ - Zero GUI.
+
 ### Example Usage Pattern
 
 You can prompt the user with a synthetic voice.
