@@ -35,9 +35,13 @@ spoken.voices = async e => {
 spoken.say = async ( text, voice='Alex' ) => {
     const speech = new SpeechSynthesisUtterance(text);
     const voices = await spoken.voices();
+    const lang   = recognition.lang;
 
     // Select Voice with Default
-    speech.voice = (voices.filter( v => v.name == voice ) || voices)[0];
+    if (voice)
+        speech.voice = (voices.filter( v => v.name == voice ) || voices)[0];
+    else
+        speech.voice = (voices.filter( v => v.lang == lang  ) || voices)[0];
 
     return new Promise( resolve => {
         speech.onend = async () => resolve(speech);
