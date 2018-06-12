@@ -2,24 +2,27 @@
 
 > `npm i spoken` # https://www.npmjs.com/package/spoken
 
-### Code Playground
-
-Playground URL: https://stephenlb.github.io/spoken/
-
-[![Text-to-Speech and Speech-to-Text](https://i.imgur.com/75tQtoZ.png)](https://i.imgur.com/75tQtoZ.png)
-img test
-[<img src="https://i.imgur.com/75tQtoZ.png">](https://i.imgur.com/75tQtoZ.png)
-
 ### Example Usage Pattern
 
-You can prompt the user with a synthetic voice and speak the answer with a few lines of code.
+You can prompt the user with a synthetic voice.
+And then you can speak the answer and capture the voice transcript.
+With a few lines of code, you can have a hands-free voice app.
 
 ```javascript
-spoken.say('What is your favorite ice cream?').then( speech => {
+spoken.say('Should I turn the hallway light on?').then( speech => {
     spoken.listen().then( transcript =>
         console.log("Answer: " + transcript) )
 } )
 ```
+
+### Code Playground
+
+> **Playground URL:** https://stephenlb.github.io/spoken/
+
+You can test the code right now in your Chrome browser.
+Click the playground link above to try it out.
+
+![Text-to-Speech and Speech-to-Text](https://i.imgur.com/75tQtoZ.png)
 
 ### Turn Speech into Text and Text into Speech
 
