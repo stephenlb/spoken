@@ -1,6 +1,6 @@
 {
   "name": "spoken",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "license": "MIT",
   "author": "Stephen Blum",
   "description": "JavaScript Web API for Text-to-Speech and Speech-to-Text.",
