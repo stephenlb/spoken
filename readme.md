@@ -141,7 +141,9 @@ which can be used to send over to a chatbot API.
 console.log(await spoken.listen());
 
 // or Promise style
-spoken.listen().then( transcript => console.log(transcript) );
+spoken.listen()
+    .then( transcript => console.log(transcript)     )
+    .catch(     error => console.warn(error.message) )
 ```
 
 There can only be one concurrent listener.
@@ -151,15 +153,17 @@ You can catch for this.
 // We can only have one concurrent listener.
 // So you can catch if there is an error.
 spoken.listen()
-    .then( transcript => console.log(transcript) )
-    .catch( error => console.error(error) );
+    .then( transcript => console.log(transcript)     )
+    .catch(     error => console.warn(error.message) )
 ```
 
 Capture live "real-time" transcription as you speak.
 
 ```javascript
-spoken.listen.on.partial( ts => console.log(ts)               );
-spoken.listen().then(     ts => console.log("Partial: " + ts) );
+spoken.listen.on.partial( ts => console.log(ts) );
+spoken.listen()
+    .then(     ts => console.log("Partial: " + ts) )
+    .catch( error => console.warn(error.message)   )
 ```
 
 Additional voice transcription events.

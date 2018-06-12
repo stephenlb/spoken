@@ -37,7 +37,7 @@ console.log("Text: " + transcript)
         <textarea>spoken.say('What is your favorite ice cream?').then( e =&gt; {
     spoken.listen().then(
         transcript =&gt; alert("Answer: " + transcript)
-    )
+    ).catch( e =&gt; console.warn(e.message) )
 } )</textarea>
         <button>Run</button>
     </div>
@@ -47,7 +47,9 @@ console.log("Text: " + transcript)
     <p>Capture live "real-time" transcription as you speak.</p>
     <div class="codebox">
         <textarea>spoken.listen.on.partial( ts =&gt; console.log(ts) )
-spoken.listen().then( ts =&gt; console.log("Partial: " + ts) )
+spoken.listen()
+    .then( ts =&gt; console.log("Partial: " + ts) )
+    .catch( e =&gt; console.warn(e.message) )
 </textarea>
         <button>Run</button>
     </div>
