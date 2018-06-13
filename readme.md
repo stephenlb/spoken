@@ -29,7 +29,7 @@ spoken.say('Should I turn the hallway light on?').then( speech => {
 You can test the code right now in your Chrome browser.
 Click the playground link above to try it out.
 
-![Text-to-Speech and Speech-to-Text](https://i.imgur.com/75tQtoZ.png)
+[![Text-to-Speech and Speech-to-Text](https://i.imgur.com/75tQtoZ.png)](https://stephenlb.github.io/spoken/)
 
 ### Turn Speech into Text and Text into Speech
 
