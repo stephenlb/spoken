@@ -206,7 +206,12 @@ function startCapture() {
 
 async function continueCapture() {
     await spoken.delay(300);
-    startCapture();
+    if (spoken.recognition.continuous) startCapture();
+}
+
+function stopCapture() {
+    spoken.recognition.continuous = false;
+    spoken.listen.stop();
 }
 ```
 
