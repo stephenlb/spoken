@@ -52,7 +52,7 @@ spoken.say = async ( text, voice='Alex' ) => {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Speech to Text - Listens to your voice and creates a transcription.
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-spoken.listen = async setup={} => {
+spoken.listen = async ( setup={} ) => {
     recognition.onstart    = spoken.listen.startcb;
     recognition.onend      = spoken.listen.endcb;
     recognition.onerror    = spoken.listen.errorcb;
