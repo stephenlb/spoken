@@ -52,10 +52,11 @@ spoken.say = async ( text, voice='Alex' ) => {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Speech to Text - Listens to your voice and creates a transcription.
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-spoken.listen = async e => {
-    recognition.onstart  = spoken.listen.startcb;
-    recognition.onend    = spoken.listen.endcb;
-    recognition.onerror  = spoken.listen.errorcb;
+spoken.listen = async setup={} => {
+    recognition.onstart    = spoken.listen.startcb;
+    recognition.onend      = spoken.listen.endcb;
+    recognition.onerror    = spoken.listen.errorcb;
+    recognition.continuous = setup.continuous;
 
     return new Promise( ( resolve, reject ) => {
         recognition.onresult = async e => transcriptResults( e, resolve );
@@ -81,6 +82,13 @@ function transcriptResults( event, resolve ) {
 
     spoken.listen.partialcb( interim.join(''), event );
     interim.length = 0;
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Easy Wait Command
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+spoken.delay = duration => {
+    return new Promise( resolve => setTimeout( resolve, duration ) );
 }
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

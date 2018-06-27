@@ -186,3 +186,28 @@ Stop listening.
 ```javascript
 spoken.listen.stop();
 ```
+
+### Continuous Listening Example
+
+Writing a document with your voice or chatting with your friend hands-free
+is possible when you enable `continuous` listening mode.
+
+```javascript
+spoken.listen.on.end(continueCapture);
+spoken.listen.on.error(continueCapture);
+
+startCapture();
+
+function startCapture() { 
+    spoken.listen({ continuous : true }).then( transcript =>
+        console.log("Captured transcript: " + transcript)
+    ).catch( e => true );
+}
+
+async function continueCapture() {
+    await spoken.delay(300);
+    startCapture();
+}
+```
+
+
