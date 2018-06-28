@@ -11,7 +11,11 @@ if (typeof window !== 'undefined') window.spoken = spoken;
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Setup Speech Regcognition
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-const recognition = new webkitSpeechRecognition();
+const recognition = new (
+    window.SpeechRecognition       ||
+    window.webkitSpeechRecognition ||
+    Object
+)();
 
 recognition.interimResults = true;
 recognition.lang           = navigator.language || 'en-US';
