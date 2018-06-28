@@ -9,6 +9,19 @@ Improve your user's exerience with easy to use _Human Interface_.
  - Hands-free app interface.
  - Help blind and low-vision users gain independence.
 
+### App Ideas
+
+You can imagine many new possible apps using this SDK.
+
+ - Writing documents with your voice.
+ - Driver safe hands-free mode.
+ - Record meeting notes.
+ - IoT Voice Control Commands.
+ - Voice controlled games.
+
+![Voice Controlled Apps](https://i.imgur.com/tXJmwrN.gif)
+
+
 ### Example Usage Pattern
 
 You can prompt the user with a synthetic voice.
