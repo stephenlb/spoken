@@ -153,8 +153,17 @@ detection using the `spoken.listen.on.partial()` event.
 This allows you to display the current transcription before
 your utterance is finished.
 
-The following will allow you to capture the final transcription
-which can be used to send over to a chatbot API.
+First you should check to see if the browser has access
+to the Speech-to-Text capability.
+
+```javascript
+const available = spoken.listen.available();
+if (available) console.log('Hurray voice transcription is available!');
+```
+
+The following will allow you to capture the full transcription
+of an utterance spoken into your microphone.
+The results can be used to send to a chatbot API.
 
 ```javascript
 // Async/Await
