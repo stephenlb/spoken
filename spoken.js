@@ -117,4 +117,9 @@ spoken.listen.startcb   = e => true;
 spoken.listen.endcb     = e => true;
 spoken.listen.errorcb   = e => true;
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Speech to Text is Available
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+spoken.listen.available = e => !!recognition.start;
+
 })();
