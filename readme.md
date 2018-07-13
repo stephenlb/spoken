@@ -3,7 +3,7 @@
 > `npm i spoken` # https://www.npmjs.com/package/spoken
 
 Spoken is a **free SDK** for voice controlled apps.
-Improve your user's exerience with easy to use _Human Interface_.
+Improve your user's experience with easy to use _Human Interface_.
 
  - Zero GUI app.
  - Hands-free app interface.
