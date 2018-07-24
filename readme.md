@@ -9,6 +9,12 @@ Improve your user's experience with easy to use _Human Interface_.
  - Hands-free app interface.
  - Help blind and low-vision users gain independence.
 
+### Build an 80's Chatbot with an NPM Package
+
+How to build a
+[voice-controlled intelligent chatbot](https://www.pubnub.com/blog/build-an-80s-chatbot-with-an-npm-package/)
+who comprehends human speech and responses accordingly and naturally!
+
 ### App Ideas
 
 You can imagine many new possible apps using this SDK.
