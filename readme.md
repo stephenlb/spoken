@@ -15,6 +15,16 @@ How to build a
 [voice-controlled intelligent chatbot](https://www.pubnub.com/blog/build-an-80s-chatbot-with-an-npm-package/)
 who comprehends human speech and responses accordingly and naturally!
 
+### Add Voice Contorl to your OBS Twitch and YouTube Live Streams
+
+Learn how we [built an OBS
+Plugin that adds Subtitles to your
+Live Stream](https://www.pubnub.com/developers/twitch-tv-obs-subtitles/).
+
+Add Subtitles to your Twitch stream! Easy OBS integration.
+Plugins should be easy to make! And for OBS, this is true. Hurray!
+The best way by far, my opinion, is using OBS Browser Sources.
+
 ### App Ideas
 
 You can imagine many new possible apps using this SDK.
