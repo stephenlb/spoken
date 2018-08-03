@@ -1,6 +1,23 @@
 # Text-to-Speech and Speech-to-Text for Artificial Intelligence and Chatbot Apps
 
-> `npm i spoken` # https://www.npmjs.com/package/spoken
+Spoken is a **free SDK** for voice controlled apps.
+Improve your user's experience with easy to use _Human Interface_.
+
+ - Zero GUI app.
+ - Hands-free app interface.
+ - Help blind and low-vision users gain independence.
+
+### Install Spoken NPM Package
+
+NPM Module Location: https://www.npmjs.com/package/spoken
+
+```shell
+npm i spoken
+```
+
+### Import Spoken into your App
+
+You can import the spoken module in your app easily using the following example.
 
 ```javascript
 import spoken from './node_modules/spoken/build/spoken.js';
@@ -10,16 +27,13 @@ spoken.say('Should I turn the hallway light on?').then( speech => {
 } )
 ```
 
+You may be looking for legacy import statements like this.
+Make sure to use the `nomodule` attribute on the `<script>` tag
+if you are also using `import spoken`.
+
 ```html
 <script nomodule src="https://stephenlb.github.io/spoken/spoken.js"></script>
 ```
-
-Spoken is a **free SDK** for voice controlled apps.
-Improve your user's experience with easy to use _Human Interface_.
-
- - Zero GUI app.
- - Hands-free app interface.
- - Help blind and low-vision users gain independence.
 
 ### Build an 80's Chatbot with an NPM Package
 
