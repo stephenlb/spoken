@@ -6,9 +6,8 @@
 'use strict';
 
 function spoken() { }
-if (typeof window !== 'undefined') window.spoken  = spoken;
-if (typeof module !== 'undefined') module.exports = spoken;
-//if (typeof export !== 'undefined') try { export default spoken } catch(e) {}
+if (typeof window !== 'undefined') window.spoken         = spoken;
+if (typeof module !== 'undefined') module.exports.spoken = spoken;
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Setup Speech Regcognition
