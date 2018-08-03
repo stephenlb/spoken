@@ -44,11 +44,32 @@ You can prompt the user with a synthetic voice.
 And then you can speak the answer and capture the voice transcript.
 With a few lines of code, you can have a hands-free voice app.
 
+Download package from NPM.
+
+```shell
+npm i spoken
+```
+
+Include package on your app page.
+
+```html
+<script src="https://stephenlb.github.io/spoken/spoken.js"></script>
+```
+
+Access `spoken` global in your app.
+
 ```javascript
 spoken.say('Should I turn the hallway light on?').then( speech => {
     spoken.listen().then( transcript =>
         console.log("Answer: " + transcript) )
 } )
+```
+
+### Webpack Example
+
+```javascript
+import spoken from './node_modules/spoken';
+spoken.say('Hello there!');
 ```
 
 ### Code Playground
