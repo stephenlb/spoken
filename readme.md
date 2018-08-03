@@ -2,6 +2,18 @@
 
 > `npm i spoken` # https://www.npmjs.com/package/spoken
 
+```javascript
+import spoken from './node_modules/spoken/build/spoken.js';
+spoken.say('Should I turn the hallway light on?').then( speech => {
+    spoken.listen().then( transcript =>
+        console.log("Answer: " + transcript) )
+} )
+```
+
+```html
+<script nomodule src="https://stephenlb.github.io/spoken/spoken.js"></script>
+```
+
 Spoken is a **free SDK** for voice controlled apps.
 Improve your user's experience with easy to use _Human Interface_.
 
@@ -65,11 +77,16 @@ spoken.say('Should I turn the hallway light on?').then( speech => {
 } )
 ```
 
-### Webpack Example
+### ES6 Modules / Webpack Import Example
 
-```javascript
-import spoken from './node_modules/spoken';
-spoken.say('Hello there!');
+If you are looking to import
+
+```html
+<script nomodule src="./spoken.js"></script>
+<script type="module">
+    import spoken from './build/spoken.js';
+    spoken.say('Hello there!');
+</script>
 ```
 
 ### Code Playground

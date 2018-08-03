@@ -26,5 +26,8 @@
     "voice-detection"
   ],
   "bugs": { "url": "https://github.com/stephenlb/spoken/issues" },
-  "dependencies": {}
+  "devDependencies": {
+    "gulp": "4.0.0",
+    "gulp-wrapper": "1.0.0"
+  }
 }

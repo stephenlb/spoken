@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <meta charset="utf-8">
 <div class="container">
     <div class="instructions">
@@ -57,8 +58,10 @@ spoken.listen()
 
 </div>
 
-<script src="spoken.js"></script>
-<script>( async e => {
+<script nomodule src="./spoken.js"></script>
+<script type="module">
+import spoken from './build/spoken.js';
+( async e => {
 'use strict';
 
 // Setup Listener Events

@@ -1,6 +1,3 @@
-// DO NOT EDIT FILE
-// THIS FILE IS BUILT WITH GULP
-function spoken(){}
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Speech SDK for Voice to Text and Text to Voice
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
