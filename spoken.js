@@ -8,6 +8,7 @@
 function spoken() { }
 if (typeof window !== 'undefined') window.spoken  = spoken;
 if (typeof module !== 'undefined') module.exports = spoken;
+if (typeof export !== 'undefined') try { export default spoken } catch(e) {}
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Setup Speech Regcognition
