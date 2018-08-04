@@ -175,6 +175,10 @@ console.log( await spoken.voices() );
 spoken.voices().then( voices => console.log(voices) );
 ```
 
+By default your language is auto-detected for you
+from `navigator.language` attribute.
+You can override this behavior using the following example.
+
 Get list of **English** voices.
 
 ```javascript
