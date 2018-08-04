@@ -41,7 +41,7 @@ How to build a
 [voice-controlled intelligent chatbot](https://www.pubnub.com/blog/build-an-80s-chatbot-with-an-npm-package/)
 who comprehends human speech and responses accordingly and naturally!
 
-### Add Voice Contorl to your OBS Twitch and YouTube Live Streams
+### Add Voice Controls to your OBS Twitch and YouTube Live Streams
 
 Learn how we [built an OBS
 Plugin that adds Subtitles to your
@@ -160,7 +160,12 @@ await spoken.say('Hello World.');
 console.log('Done talking.');
 ```
 
-### Text-to-Speech Voice Library
+### Text-to-Speech Voice Selection Library
+
+Synthetic voices are selectable using the `spoken.voices` method.
+There is a default voice that is included.
+You may want to pick a different voice.
+The following examples show you how to select a differnt voice.
 
 ```javascript
 // List of voices supported on platform
@@ -173,8 +178,12 @@ spoken.voices().then( voices => console.log(voices) );
 Get list of **English** voices.
 
 ```javascript
-// List English Speaking Voices
-(await spoken.voices()).filter( v => v.lang.indexOf('en') == 0 );
+// List of English Speaking Voices
+spoken.recognition.language = navigator.language || 'en-US';
+let voices = (await spoken.voices()).filter( v => !v.lang.indexOf('en') );
+
+// Use the First Voice
+spoken.say( 'Welcome to flavor town.', voices[0] );
 ```
 
 Sample the list of English voices.
